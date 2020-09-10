@@ -140,18 +140,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Camera\Camera.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Model.h" />
+    <ClInclude Include="src\Texture\BasicTexture.h" />
+    <ClInclude Include="src\Renderer\CubeRenderer.h" />
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Paths.h" />
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\Stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\Texture\BasicTexture.cpp" />
+    <ClCompile Include="src\Renderer\CubeRenderer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Stb\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\basicFragShader.glsl" />
-    <None Include="src\Shaders\basicVertexShader.glsl" />
+    <None Include="src\Shaders\BasicFragShader.glsl" />
+    <None Include="src\Shaders\BasicFragShaderOld.glsl" />
+    <None Include="src\Shaders\BasicVertexShader.glsl" />
+    <None Include="src\Shaders\BasicVertexShaderOld.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glad\glad.vcxproj">

@@ -1,13 +1,14 @@
 #pragma once
+#include <string>
 
-//Shader ourShader(vertexShaderPath, fragShaderPath);
+//Shader ourShader(vertexShaderPath.c_str(), fragShaderPath.c_str());
 
 //Temporary...
-const char* vertexShaderPath = "C:/dev/mycraft/mycraft/src/Shaders/basicVertexShader.glsl";
-const char* fragShaderPath = "C:/dev/mycraft/mycraft/src/Shaders/basicFragShader.glsl";
+const std::string vertexShaderPath = "C:/dev/mycraft/mycraft/src/Shaders/BasicVertexShader.glsl";
+const std::string fragShaderPath = "C:/dev/mycraft/mycraft/src/Shaders/BasicFragShader.glsl";
 
-const char* containerTexturePath = "C:/dev/mycraft/resources/textures/container.jpg";
-const char* faceTexturePath = "C:/dev/mycraft/resources/textures/awesomeface.png";
+const std::string containerTexturePath = "C:/dev/mycraft/resources/textures/container.jpg";
+const std::string faceTexturePath = "C:/dev/mycraft/resources/textures/awesomeface.png";
 
-const char* grassTexPath = "C:/dev/mycraft/resources/textures/voxels/grass.png";
+const std::string grassTexPath = "C:/dev/mycraft/resources/textures/voxels/grass.png";
 
