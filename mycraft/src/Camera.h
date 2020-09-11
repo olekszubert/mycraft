@@ -1,7 +1,4 @@
-
-
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -18,11 +15,11 @@ enum Camera_Movement {
 };
 
 // Default camera values
-const float YAW         = -90.0f;
-const float PITCH       =  0.0f;
-const float SPEED       =  2.5f;
-const float SENSITIVITY =  0.1f;
-const float ZOOM        =  45.0f;
+const float YAW = -90.0f;
+const float PITCH = 0.0f;
+const float SPEED = 2.5f;
+const float SENSITIVITY = 0.1f;
+const float ZOOM = 45.0f;
 
 
 // An abstract camera class that processes input and calculates the corresponding Euler Angles, Vectors and Matrices for use in OpenGL
@@ -63,7 +60,7 @@ public:
     }
 
     // returns the view matrix calculated using Euler Angles and the LookAt Matrix
-    glm::mat4 GetViewMatrix()
+    const glm::mat4& GetViewMatrix() const
     {
         return glm::lookAt(Position, Position + Front, Up);
     }
@@ -88,7 +85,7 @@ public:
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
 
-        Yaw   += xoffset;
+        Yaw += xoffset;
         Pitch += yoffset;
 
         // make sure that when pitch is out of bounds, screen doesn't get flipped
@@ -111,7 +108,7 @@ public:
         if (Zoom < 1.0f)
             Zoom = 1.0f;
         if (Zoom > 45.0f)
-            Zoom = 45.0f; 
+            Zoom = 45.0f;
     }
 
 private:
@@ -126,8 +123,35 @@ private:
         Front = glm::normalize(front);
         // also re-calculate the Right and Up vector
         Right = glm::normalize(glm::cross(Front, WorldUp));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-        Up    = glm::normalize(glm::cross(Right, Front));
+        Up = glm::normalize(glm::cross(Right, Front));
     }
 };
-#endif
 
+
+
+#if 0
+#include "Maths/glm.h"
+#include "Entity.h"
+
+class Camera : public Entity
+{
+public:
+    Camera();
+
+    void update();
+    void hookEntity(const Entity& entity);
+
+    const glm::mat4& getViewMatrix()           const noexcept;
+    const glm::mat4& getProjMatrix()           const noexcept;
+    const glm::mat4& getProjectionViewMatrix() const noexcept;
+
+private:
+    const Entity* m_pEntity;
+
+    glm::mat4 m_projectionMatrix;
+    glm::mat4 m_viewMatrix;
+    glm::mat4 m_projViewMatrx;
+
+
+};
+#endif

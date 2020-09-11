@@ -3,29 +3,25 @@
 #include <vector>
 
 #include "Model.h"
-#include "Shaders/Shader.h"
+#include "Maths/glm.h"
+#include "Shaders/BasicShader.h"
 #include "Texture/BasicTexture.h"
-//add texture atlas
 
-//Why is this here...
 class Camera;
-class Entity;
 
 class CubeRenderer
 {
 public:
-	CubeRenderer();
+    CubeRenderer();
 
-	void Add(const Entity& entity);
-	void Render(const Camera& camera);
+    void add(const glm::vec3& position);
+
+    void render(const Camera& camera);
 
 private:
-	std::vector<const Entity*> m_Cubes;
+    std::vector<glm::vec3> m_quads;
 
-	Model m_CubeModel;
-	//Shader m_Shader;
-	BasicTexture m_BasicTexture;
-
-	//TextureAtlas m_TextureAtlas;
+    Model m_cubeModel;
+    BasicShader m_shader;
+    BasicTexture m_basicTexture;
 };
-

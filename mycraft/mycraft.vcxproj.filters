@@ -13,19 +13,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Paths.h" />
-    <ClInclude Include="src\Shaders\Shader.h">
-      <Filter>Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\Stb\stb_image.h">
       <Filter>Stb</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\CubeRenderer.h" />
     <ClInclude Include="src\Texture\BasicTexture.h" />
-    <ClInclude Include="src\Camera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Texture\TextureAtlas.h" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Maths\Matrix.h" />
+    <ClInclude Include="src\Maths\glm.h" />
+    <ClInclude Include="src\Shaders\BasicShader.h" />
+    <ClInclude Include="src\Shaders\Shader.h" />
+    <ClInclude Include="src\Shaders\ShaderLoader.h" />
+    <ClInclude Include="src\Util\FileUtil.h" />
+    <ClInclude Include="src\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
@@ -35,15 +39,17 @@
     <ClCompile Include="src\Renderer\CubeRenderer.cpp" />
     <ClCompile Include="src\Texture\BasicTexture.cpp" />
     <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\Texture\TextureAtlas.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Maths\Matrix.cpp" />
+    <ClCompile Include="src\Shaders\BasicShader.cpp" />
+    <ClCompile Include="src\Shaders\Shader.cpp" />
+    <ClCompile Include="src\Shaders\ShaderLoader.cpp" />
+    <ClCompile Include="src\Util\FileUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\BasicFragShaderOld.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\BasicVertexShaderOld.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="src\Shaders\BasicFragShader.glsl" />
-    <None Include="src\Shaders\BasicVertexShader.glsl" />
+    <None Include="Shaders\BasicVertex.glsl" />
+    <None Include="Shaders\BasicFragment.glsl" />
   </ItemGroup>
 </Project>

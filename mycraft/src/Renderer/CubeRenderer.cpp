@@ -1,14 +1,16 @@
 #include "CubeRenderer.h"
+
 #include <iostream>
 
-#include "Paths.h"
+#include "Camera.h"
+#include "Maths/Matrix.h"
+#include "Entity.h"
 
 CubeRenderer::CubeRenderer()
 {
-    //Hardcoded grass texture
-    m_BasicTexture.LoadFromFile(grassTexPath);
+    m_basicTexture.LoadFromFile("test");
 
-    std::vector<float> vertexCoords
+    std::vector<GLfloat> vertexCoords
     {
         //Back
         1, 0, 0,
@@ -47,23 +49,40 @@ CubeRenderer::CubeRenderer()
         0, 0, 1.
     };
 
+    std::vector<GLfloat> texCoords
+    {
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
 
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
 
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
 
-    /*auto top = m_atlasTest.getTexture({ 0, 0 });
-    auto side = m_atlasTest.getTexture({ 1, 0 });
-    auto bottom = m_atlasTest.getTexture({ 2, 0 });*/
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
 
-    //
-    std::vector<float> texCoords;
-    /*texCoords.insert(texCoords.end(), side.begin(), side.end());
-    texCoords.insert(texCoords.end(), side.begin(), side.end());
-    texCoords.insert(texCoords.end(), side.begin(), side.end());
-    texCoords.insert(texCoords.end(), side.begin(), side.end());
-    texCoords.insert(texCoords.end(), top.begin(), top.end());
-    texCoords.insert(texCoords.end(), bottom.begin(), bottom.end());*/
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
 
-    std::vector<unsigned int> indices
+        0, 1,
+        1, 1,
+        1, 0,
+        0, 0,
+    };
+
+    std::vector<GLuint> indices
     {
         0, 1, 2,
         2, 3, 0,
@@ -84,6 +103,32 @@ CubeRenderer::CubeRenderer()
         22, 23, 20
     };
 
-    //Create mesh and add to m_CubeModel
-    m_CubeModel.AddData({ vertexCoords, texCoords, indices });
+    m_cubeModel.AddData({ vertexCoords, texCoords, indices });
 }
+
+void CubeRenderer::add(const glm::vec3& position)
+{
+    m_quads.push_back(position);
+}
+
+void CubeRenderer::render(const Camera& camera)
+{
+    glEnable(GL_CULL_FACE);
+
+    m_shader.useProgram();
+    m_cubeModel.BindVAO();
+    m_basicTexture.BindTexture();
+
+    m_shader.loadProjectionViewMatrix(camera.GetViewMatrix());
+
+    for (auto& quad : m_quads)
+    {
+        const Entity tmp = { quad, { 0, 0, 0 } };
+        m_shader.loadModelMatrix(makeModelMatrix(tmp));
+
+        glDrawElements(GL_TRIANGLES, m_cubeModel.GetIndicesCount(), GL_UNSIGNED_INT, nullptr);
+    }
+
+    m_quads.clear();
+}
+

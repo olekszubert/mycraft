@@ -140,27 +140,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Util\FileUtil.h" />
+    <ClInclude Include="src\Shaders\BasicShader.h" />
+    <ClInclude Include="src\Shaders\Shader.h" />
+    <ClInclude Include="src\Shaders\ShaderLoader.h" />
+    <ClInclude Include="src\Maths\glm.h" />
+    <ClInclude Include="src\Maths\Matrix.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Texture\BasicTexture.h" />
     <ClInclude Include="src\Renderer\CubeRenderer.h" />
-    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Paths.h" />
-    <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\Stb\stb_image.h" />
+    <ClInclude Include="src\Texture\TextureAtlas.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Util\FileUtil.cpp" />
+    <ClCompile Include="src\Shaders\BasicShader.cpp" />
+    <ClCompile Include="src\Shaders\Shader.cpp" />
+    <ClCompile Include="src\Shaders\ShaderLoader.cpp" />
+    <ClCompile Include="src\Maths\Matrix.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Texture\BasicTexture.cpp" />
     <ClCompile Include="src\Renderer\CubeRenderer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Stb\stb_image.cpp" />
+    <ClCompile Include="src\Texture\TextureAtlas.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Shaders\BasicFragShader.glsl" />
-    <None Include="src\Shaders\BasicFragShaderOld.glsl" />
-    <None Include="src\Shaders\BasicVertexShader.glsl" />
-    <None Include="src\Shaders\BasicVertexShaderOld.glsl" />
+    <None Include="Shaders\BasicFragment.glsl" />
+    <None Include="Shaders\BasicVertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glad\glad.vcxproj">
